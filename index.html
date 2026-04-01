@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sers AI | Premium Chat Interface</title>
+    <meta name="description" content="Experience the next generation of AI assistance with Sers. A modern, high-fidelity chat interface.">
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <button class="menu-btn" id="toggleSidebar">
+                    <i data-lucide="menu"></i>
+                </button>
+                <div class="new-chat-container">
+                    <button class="new-chat-btn" id="newChatBtn">
+                        <i data-lucide="plus"></i>
+                        <span>New Chat</span>
+                    </button>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <p class="section-title">History</p>
+                    <ul class="history-list" id="historyList">
+                        <!-- History items will be injected here dynamically -->
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="footer-item">
+                    <i data-lucide="settings"></i>
+                    <span>Settings</span>
+                </button>
+                <button class="footer-item">
+                    <i data-lucide="help-circle"></i>
+                    <span>Help & Support</span>
+                </button>
+                <div class="user-profile">
+                    <div class="avatar">S</div>
+                    <div class="user-info">
+                        <p class="user-name">Developer Mode</p>
+                        <p class="user-plan">Premium sers</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <section class="hero-section" id="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">How can I help you, <span class="brand-name">sers</span>?</h1>
+                    
+                    <div class="suggestion-container">
+                        <button class="suggestion-chip">
+                            <i data-lucide="code"></i>
+                            <span>Explain a concept</span>
+                        </button>
+                        <button class="suggestion-chip">
+                            <i data-lucide="pen-tool"></i>
+                            <span>Help me write</span>
+                        </button>
+                        <button class="suggestion-chip">
+                            <i data-lucide="lightbulb"></i>
+                            <span>Brainstorm ideas</span>
+                        </button>
+                        <button class="suggestion-chip">
+                            <i data-lucide="search"></i>
+                            <span>Analyze data</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <div id="imagePreviewContainer" class="image-preview-container hidden">
+                <div class="preview-wrapper">
+                    <img id="imagePreview" src="" alt="Preview">
+                    <button id="removeImageBtn" class="remove-image-btn">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="pdfPreviewContainer" class="pdf-preview-container hidden">
+                <div class="pdf-preview-card">
+                    <i data-lucide="file-text"></i>
+                    <span id="pdfName" class="pdf-name">document.pdf</span>
+                    <button id="removePdfBtn" class="remove-pdf-btn">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <div class="input-actions-left">
+                        <button class="action-btn" id="imageBtn" title="Upload Image">
+                            <i data-lucide="image"></i>
+                        </button>
+                        <button class="action-btn" id="camBtn" title="Take Photo">
+                            <i data-lucide="camera"></i>
+                        </button>
+                        <button class="action-btn" id="pdfBtn" title="Analyze PDF">
+                            <i data-lucide="file-text"></i>
+                        </button>
+                    </div>
+                    <textarea id="chatInput" placeholder="Type a message..." rows="1"></textarea>
+                    <div class="input-actions-right">
+                        <button class="action-btn" id="micBtn" title="Voice Input">
+                            <i data-lucide="mic"></i>
+                        </button>
+                        <button class="send-btn" id="sendBtn">
+                            <i data-lucide="arrow-up"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hidden elements for camera capture -->
+            <video id="video" width="640" height="480" autoplay style="display:none"></video>
+            <canvas id="canvas" width="640" height="480" style="display:none"></canvas>
+            <input type="file" id="fileInput" accept="image/*" style="display:none">
+            <input type="file" id="pdfInput" accept="application/pdf" style="display:none">
+
+            <!-- Chat Area (Hidden by default) -->
+            <div class="chat-display hidden" id="chatDisplay">
+                <!-- Messages will appear here -->
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
